@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "noteApp"
+    }
+  },
+  "defaultProject": "noteApp",
+  "cli": {
+    "analytics": "4d3dc0a6-a9c3-43c0-a926-0544409d4c77"
+  }
 }

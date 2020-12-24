@@ -1,0 +1,15 @@
+<p>dashboard works!</p>
+{{title}}
+
+<hr>
+<app-child (open)="changeNote($event)"></app-child>
+
+<app-weather [myWeather$]='weatherData$'>
+
+    <input (keyup)="searchTerm$.next($event.target.value)">
+    <!-- <input [(ngModel)]="name" placeholder="Email">
+    <button (click)='myClick();'>Search</button>
+     <input [(ngModel)]="name" placeholder="Email"/> -->
+
+    {{name}}
+</app-weather>
