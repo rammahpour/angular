@@ -1,6 +1,4 @@
 <p>weather works!</p>
-<!-- {{myWeather$ | async | json}} -->
 <li *ngFor="let obj of myWeather$ | async">
-
     {{obj.country}} : {{obj.Temperature}}</li>
 <ng-content></ng-content>

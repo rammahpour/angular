@@ -5,16 +5,18 @@ import { ShareRoutingModule } from './share-routing.module';
 import { WeatherComponent } from '../weather/weather.component';
 
 import { BasicDirective } from '../basic-directive'; // just added
+import { MyshareComponent } from './myshare/myshare.component';
+// import { ChildComponent } from '../child/child.component';
 
 
 @NgModule({
-  declarations: [WeatherComponent, BasicDirective],
+  declarations: [WeatherComponent, MyshareComponent, BasicDirective],
   imports: [
     CommonModule,
     ShareRoutingModule
   ],
   exports: [
-    WeatherComponent, BasicDirective
+    WeatherComponent, BasicDirective, MyshareComponent
   ]
 })
 export class ShareModule { }
