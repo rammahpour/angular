@@ -20,6 +20,15 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ShareModule } from './share/share.module';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { CustomerViewComponent } from './customer/customer-view/customer-view.component';
+import { CustomerAddComponent } from './customer/customer-add/customer-add.component';
+import { CustomerModule } from './customer/customer.module';
+import { EffectsModule } from '@ngrx/effects';
+import { CustomerEffects } from './customer/store/effect/customer.effects';
 // import { BasicDirective } from './basic-directive';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -30,11 +39,14 @@ import { ShareModule } from './share/share.module';
     AppComponent,
     ChildComponent,
     DashboardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    // CustomerViewComponent,
+    // CustomerAddComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    CustomerModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -45,6 +57,10 @@ import { ShareModule } from './share/share.module';
     // FlexLayoutModule,
     MatToolbarModule,
     MatMenuModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([CustomerEffects]),
+
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
     // MatTabsModule
   ],
   providers: [],
