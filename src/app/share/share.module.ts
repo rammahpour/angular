@@ -13,10 +13,11 @@ import {MatButtonModule} from'@angular/material/button';
 import {MatIconModule} from'@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MycardsComponent } from './mycards/mycards.component';
 
 
 @NgModule({
-  declarations: [WeatherComponent, MyshareComponent, BasicDirective],
+  declarations: [WeatherComponent, MyshareComponent, BasicDirective, MycardsComponent],
   imports: [
     CommonModule,
     ShareRoutingModule,
@@ -27,7 +28,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     FlexLayoutModule
   ],
   exports: [
-    WeatherComponent, BasicDirective, MyshareComponent, MatCardModule, MatButtonModule, MatIconModule, FlexLayoutModule, MatSnackBarModule
+    WeatherComponent, BasicDirective, MycardsComponent, MyshareComponent, MatCardModule, MatButtonModule, MatIconModule, FlexLayoutModule, MatSnackBarModule
   ]
 })
 export class ShareModule { }
