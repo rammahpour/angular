@@ -32,6 +32,7 @@ import { CustomerModule } from './customer/customer.module';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomerEffects } from './customer/store/effect/customer.effects';
 import { LoginComponent } from './login/login.component';
+import { PatientModule } from './patient/patient.module';
 // import { BasicDirective } from './basic-directive';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -51,6 +52,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     FormsModule,
     CustomerModule,
+    PatientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

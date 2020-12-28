@@ -7,11 +7,13 @@ export const customerFeatureKey = 'customer';
 
 export interface CustomerState {
   customers: Customer[];
+  loading : boolean;
 
 }
 
 export const initialState: CustomerState = {
-  customers: []
+  customers: [],
+  loading : true
 };
 
 
@@ -21,7 +23,8 @@ export const customerReducer = createReducer(
     debugger;
     return ({
       ...state,
-      customers: [...state.customers, customer]
+  customers: [...state.customers, customer]
+   //   customers: [{ name : 'sdfsdf' }]
     })
   })
 );

@@ -1,0 +1,5 @@
+
+<h4>List of Patients</h4>
+<div *ngFor="let patient of patients$ | async; let i=index">
+  <span >{{i+1}}.</span> {{patient.name}}
+</div>
