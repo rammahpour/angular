@@ -14,7 +14,7 @@ export class DashboardListComponent implements OnInit {
 
   title: string;
   ngOnInit(): void {
-
+    this.title = 'Title';
   }
 
   // changeNote(name) {

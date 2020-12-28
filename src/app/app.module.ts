@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +31,7 @@ import { CustomerAddComponent } from './customer/customer-add/customer-add.compo
 import { CustomerModule } from './customer/customer.module';
 import { EffectsModule } from '@ngrx/effects';
 import { CustomerEffects } from './customer/store/effect/customer.effects';
+import { LoginComponent } from './login/login.component';
 // import { BasicDirective } from './basic-directive';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -40,6 +43,7 @@ import { CustomerEffects } from './customer/store/effect/customer.effects';
     ChildComponent,
     DashboardComponent,
     NotFoundComponent,
+    LoginComponent,
     // CustomerViewComponent,
     // CustomerAddComponent,
   ],
@@ -48,6 +52,7 @@ import { CustomerEffects } from './customer/store/effect/customer.effects';
     FormsModule,
     CustomerModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     // MatButtonModule,

@@ -7,6 +7,7 @@ import { ShareModule } from '../share/share.module';
 
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
+import { CustomerModule } from '../customer/customer.module';
 
 @NgModule({
   declarations: [DashboardListComponent],
@@ -15,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
     MdashboardRoutingModule,
     ShareModule,
     MatTabsModule,
+    CustomerModule
     // MatCardModule
   ]
 })

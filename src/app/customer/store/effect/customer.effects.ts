@@ -19,47 +19,48 @@ export class CustomerEffects {
   private ApiURL: string = 'https://localhost:44308/api/ToDo';
 
   GetToDos$: Observable<Action> = createEffect(() =>
-  this.action$.pipe(
-    ofType(fromCustomer.addCustomer),
-    filter(s=>!!s),
-    tap(s => {
-      // this._snackBar.openFromComponent(MyshareComponent, {
-      //   duration: 5000,
-      // });
-      // this._snackBar.open('message', 'action', {
-      //   duration: 2000,
-      // });
-    }),
-    switchMap(action =>
-      this._WeatherService.LoadData('iran').pipe(
-        map((data: any[]) => {
-
-          debugger;
-          return fromCustomer.CustomerSucceeded(action.customer)
-          catchError((error: Error) => {
-            return of(fromCustomer.CustomerFailed());
-          })
-        })
+    this.action$.pipe(
+      ofType(fromCustomer.addCustomer),
+      filter(s => !!s),
+      tap(s => {
+        // this._snackBar.openFromComponent(MyshareComponent, {
+        //   duration: 5000,
+        // });
+        // this._snackBar.open('message', 'action', {
+        //   duration: 2000,
+        // });
+      }),
+      switchMap(action =>
+        of(action).pipe(
+          switchMap(() => this._WeatherService.LoadData('iran').pipe(
+      //    filter(s=>!!s),
+            map((data: any[]) => {
+              return fromCustomer.CustomerSucceeded(action.customer)
+              catchError((error: Error) => {
+                return of(fromCustomer.CustomerFailed());
+              })
+            })
+          ))
+        )
       )
     )
+
   )
 
-)
 
+  SuccessToDoGet$: Observable<Action> = createEffect(() =>
+    this.action$.pipe(
+      ofType(fromCustomer.CustomerSucceeded),
+      tap(s => {
+        this._snackBar.open('message', 'action', {
+          duration: 2000,
+        });
+      })
+    ),
+    { dispatch: false }
+  )
 
-SuccessToDoGet$: Observable<Action> = createEffect(() =>
-this.action$.pipe(
-  ofType(fromCustomer.CustomerSucceeded),
-  tap(s => {
-    this._snackBar.open('message', 'action', {
-      duration: 2000,
-    });
-  })
-),
-{ dispatch: false }
-)
-
-// )
+  // )
   // GetToDos$: Observable<Action> = createEffect(() =>
   //   this.action$.pipe(
   //     ofType(fromCustomer.addCustomer),
@@ -81,16 +82,16 @@ this.action$.pipe(
 
   // )
 
-//   GetToDos$: Observable<Action> = createEffect(() =>
-//   this.action$.pipe(
-//     ofType(addCustomer),
-//     tap(s => {
-//       debugger;
-//       console.log('s', s)
-//     }),
-//     map(action => addCustomer(action.customer))
-//   )
+  //   GetToDos$: Observable<Action> = createEffect(() =>
+  //   this.action$.pipe(
+  //     ofType(addCustomer),
+  //     tap(s => {
+  //       debugger;
+  //       console.log('s', s)
+  //     }),
+  //     map(action => addCustomer(action.customer))
+  //   )
 
-// )
+  // )
 
 }

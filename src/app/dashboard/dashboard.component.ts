@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
     //   map(s => s.filter(s => s.country.toLocaleLowerCase() != null))
     // )
     this.weatherData$ = this._ws.search(this.searchTerm$);
-//this.ramin.
+    //this.ramin.
   }
 
   changeNote(name) {

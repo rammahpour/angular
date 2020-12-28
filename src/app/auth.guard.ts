@@ -10,17 +10,17 @@ import { WeatherService } from './weather.service';
 export class AuthGuard implements CanActivate {
   constructor(private router: Router, private _ws: WeatherService) { }
 
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-
-    return this._ws.LoadData('iran').pipe(
-      map(e => {
-        //
-        // this.router.navigate(['/login']);
-         return true;
-      }),
-      catchError(error => of(false))
-      // this.router.navigate(['/login']);
-    );
+    return true;
+    // return this._ws.LoadData('iran').pipe(
+    //   map(e => {
+    //     //
+    //     // this.router.navigate(['/login']);
+    //      return true;
+    //   }),
+    //   catchError(error => of(false))
+    //   // this.router.navigate(['/login']);
+    // );
   }
 }
