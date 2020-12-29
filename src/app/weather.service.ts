@@ -11,8 +11,18 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
+
+  LoadFakeData() : any {
+
+      this.http.get('https://api.mocki.io/v1/78affc09').subscribe(s=>{
+debugger;
+console.log(s);
+      });
+  }
+
   LoadData(country: string): Observable<IWeather[]> {
 
+    //this.LoadFakeData();
     //this.getData();
     //return this.http.get('https://jsonplaceholder.typicode.com/users');
 

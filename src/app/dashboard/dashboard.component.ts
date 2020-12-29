@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { IWeather } from '../models/weather';
 import { of, Observable, Subject, BehaviorSubject } from 'rxjs';
 import { WeatherService } from '../weather.service';
-import { map } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { MyEvent } from '../models/events';
+import { Store } from '@ngrx/store';
+import * as customerActions from '../customer/store/action/customer.actions';
 // import { Events } from '../models/events'
 
 @Component({
@@ -17,7 +19,7 @@ export class DashboardComponent implements OnInit {
   searchTerm$ = new BehaviorSubject('');
   weatherData$: Observable<IWeather[]> = of([]);
   name = 'raminnn';
-  constructor(private _ws: WeatherService) { }
+  constructor(private _ws: WeatherService, private store: Store) { }
   title = 'test';
 
 
@@ -27,6 +29,10 @@ export class DashboardComponent implements OnInit {
     // this.weatherData$ = this._ws.LoadData().pipe(
     //   map(s => s.filter(s => s.country.toLocaleLowerCase() != null))
     // )
+
+    this.searchTerm$.pipe(
+      debounceTime(400),
+      distinctUntilChanged()).subscribe(s => this.store.dispatch(customerActions.CustomerEntered(s)))
     this.weatherData$ = this._ws.search(this.searchTerm$);
     //this.ramin.
   }
@@ -36,7 +42,7 @@ export class DashboardComponent implements OnInit {
   }
 
   myClick($event) {
-   // console.log($event);
+    // console.log($event);
   }
 
 }

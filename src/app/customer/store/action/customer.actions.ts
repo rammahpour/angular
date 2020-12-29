@@ -12,6 +12,13 @@ export const CustomerSucceeded = createAction(
    (customer: Customer) => ({customer})
 );
 
+//CustomerEntered
+
+export const CustomerEntered = createAction(
+  '[Customer] Customer Search',
+   (query: string) => ({query})
+);
+
 export const CustomerFailed = createAction(
   '[Customer] Customer Succeeded'
 );

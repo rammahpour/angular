@@ -7,28 +7,40 @@ export const customerFeatureKey = 'customer';
 
 export interface CustomerState {
   customers: Customer[];
-  loading : boolean;
+  loading: boolean;
 
 }
 
 export const initialState: CustomerState = {
   customers: [],
-  loading : true
+  loading: true
 };
 
 
 export const customerReducer = createReducer(
   initialState,
-  on(CustomerActions.CustomerSucceeded, (state: CustomerState, { customer })  => {
+  on(CustomerActions.CustomerSucceeded, (state: CustomerState, { customer }) => {
     debugger;
     return ({
       ...state,
-  customers: [...state.customers, customer]
-   //   customers: [{ name : 'sdfsdf' }]
+      customers: [...state.customers, customer]
+      //   customers: [{ name : 'sdfsdf' }]
     })
-  })
+  },
+
+  ),
+  on(CustomerActions.CustomerEntered, (state: CustomerState, { query }) => {
+    debugger;
+    return ({
+      ...state,
+      search: query
+      //   customers: [{ name : 'sdfsdf' }]
+    })
+  },
+
+  )
 );
 
 export function reducer(state: CustomerState | undefined, action: Action): any {
-    return customerReducer(state, action);
-  }
+  return customerReducer(state, action);
+}

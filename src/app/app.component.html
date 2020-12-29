@@ -57,6 +57,13 @@ wel
 
                         <app-patient-add></app-patient-add> -->
 
+                        <div id="quill">
+                                <p>Content *</p>
+                                <quill-editor  [styles]="editorStyle" placeholder="Enter Text" [modules]="config"
+                                    (onEditorCreated)="created($event)" required>
+                                </quill-editor>
+                            </div>
+
 
         </div>
 </mat-drawer-container>
