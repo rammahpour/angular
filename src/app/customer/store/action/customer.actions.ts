@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { IWeather } from 'src/app/models/weather';
 import {Customer} from '../../../models/customer';
 
 
@@ -10,6 +11,11 @@ export const addCustomer = createAction(
 export const CustomerSucceeded = createAction(
   '[Customer] Customer Succeeded',
    (customer: Customer) => ({customer})
+);
+
+export const loadComplete = createAction(
+  '[PatientSearch] Load Complete',
+  (results: Customer[]) => ({ payload: { results } })
 );
 
 //CustomerEntered

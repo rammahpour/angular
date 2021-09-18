@@ -11,14 +11,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   // { path: 'ss', component: AppComponent },
   { path: 'dashboard', component: DashboardComponent},
-
   { path: 'login', component: LoginComponent},
-
   { path: '404', component: NotFoundComponent },
-
   { path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)},
-
-   { path: 'mdashboard', canActivate: [AuthGuard] , loadChildren: () => import('./mdashboard/mdashboard.module').then(m => m.MdashboardModule)},
+  { path: 'mdashboard', canActivate: [AuthGuard] , loadChildren: () => import('./mdashboard/mdashboard.module').then(m => m.MdashboardModule)},
 
 ];//loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
 

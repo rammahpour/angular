@@ -6,6 +6,8 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { MyEvent } from '../models/events';
 import { Store } from '@ngrx/store';
 import * as customerActions from '../customer/store/action/customer.actions';
+import { selectCustomers } from '../customer/store/selector/customer.selectors';
+import { Customer } from '../models/customer';
 // import { Events } from '../models/events'
 
 @Component({
@@ -18,6 +20,8 @@ export class DashboardComponent implements OnInit {
   //searchTerm$ = new Subject<string>();
   searchTerm$ = new BehaviorSubject('');
   weatherData$: Observable<IWeather[]> = of([]);
+  CusData$: Observable<Customer[]> = of([]);
+
   name = 'raminnn';
   constructor(private _ws: WeatherService, private store: Store) { }
   title = 'test';
@@ -32,9 +36,20 @@ export class DashboardComponent implements OnInit {
 
     this.searchTerm$.pipe(
       debounceTime(400),
-      distinctUntilChanged()).subscribe(s => this.store.dispatch(customerActions.CustomerEntered(s)))
-    this.weatherData$ = this._ws.search(this.searchTerm$);
+      distinctUntilChanged()).subscribe(s => {
+        debugger;
+        return this.store.dispatch(customerActions.CustomerEntered(s));
+      })
+     //this.weatherData$ = this._ws.search(this.searchTerm$); // uncomment
+    //  this._ws.search(this.searchTerm$).subscribe(s=>{
+
+    //   console.log('ssss', s);
+    //   return s;
+    //  })
     //this.ramin.
+
+
+    this.CusData$ = this.store.select(selectCustomers);
   }
 
   changeNote(name) {

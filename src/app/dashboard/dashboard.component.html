@@ -4,6 +4,11 @@
 <hr>
 
 
+<li *ngFor="let obj of CusData$ | async">
+    {{obj.name}}</li>
+
+
+
 <app-child (open)="changeNote($event)"></app-child>
 
 <app-weather [myWeather$]='weatherData$'>

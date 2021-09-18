@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { IWeather } from './models/weather';
 import { debounceTime, distinctUntilChanged, switchMap, filter, tap, map, delay } from 'rxjs/operators';
+import { Customer } from './models/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,35 @@ console.log(s);
     return of(temperatures).pipe(
       delay(1000),
       map(s => s.filter(s => !!country ? s.country.toLocaleLowerCase() === country : s)
+      //   {
+      //   if (!!country) {
+      //     return s.country.toLocaleLowerCase() === country;
+      //   } else {
+      //     return s;
+      //   }
+      // }
+
+      //)
+      )
+    );
+  }
+
+  LoadData2(country: string): Observable<Customer[]> {
+
+    //this.LoadFakeData();
+    //this.getData();
+    //return this.http.get('https://jsonplaceholder.typicode.com/users');
+
+    const temperatures = [{
+      name: 'Iran'
+    },
+    {
+      name: 'US'
+    }];
+
+    return of(temperatures).pipe(
+      delay(1000),
+      map(s => s.filter(s => !!country ? s.name.toLocaleLowerCase() === country : s)
       //   {
       //   if (!!country) {
       //     return s.country.toLocaleLowerCase() === country;

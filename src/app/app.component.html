@@ -1,71 +1,83 @@
-<mat-drawer-container class="container" autosize>
-        <mat-drawer #drawer class="sidenav">
-                <button (click)="drawer.toggle()" color="primary" mat-button routerLink="dashboard">Customers</button>
-                <button (click)="drawer.toggle()" color="primary" mat-button routerLink="mdashboard">MDashboard</button>
-        </mat-drawer>
-        <div class="sidenav-content">
-                <mat-toolbar color="primary">
+<div *ngIf="($loading | async); else loggedOut" flex fxLayout="row" fxLayoutAlign="center center" style="height: 100%;width:100%;position:fixed">
+        <div class="dizzy-gillespie"></div>
 
-                        <mat-toolbar-row>
-                                <button mat-icon-button onclick="this.blur()" (click)="drawer.toggle()">
-                                        <mat-icon>menu</mat-icon>
-                                </button>
-                                <span>Title</span>
-                                <span class="spacer"></span>
-                                <mat-icon>favorite</mat-icon>
-                                <button mat-icon-button [matMenuTriggerFor]="menu">
-                                        <mat-icon>more_vert</mat-icon>
-                                </button>
-                                <mat-menu #menu="matMenu">
-                                        <button mat-menu-item>
-                                                <mat-icon>mode_comment</mat-icon>
-                                                <span>Comment</span>
+</div>
+
+<ng-template #loggedOut>
+        <mat-drawer-container class="container" autosize>
+                <mat-drawer #drawer class="sidenav">
+                        <button (click)="drawer.toggle()" color="primary" mat-button routerLink="dashboard">Customers</button>
+                        <button (click)="drawer.toggle()" color="primary" mat-button routerLink="mdashboard">MDashboard</button>
+                </mat-drawer>
+                <div class="sidenav-content">
+                        <mat-toolbar color="primary">
+
+                                <mat-toolbar-row>
+                                        <button mat-icon-button onclick="this.blur()" (click)="drawer.toggle()">
+                                                <mat-icon>menu</mat-icon>
                                         </button>
-                                        <button mat-menu-item>
-                                                <mat-icon>publish</mat-icon>
-                                                <span>Share</span>
+                                        <span>Title</span>
+                                        <span class="spacer"></span>
+                                        <mat-icon>favorite</mat-icon>
+                                        <button mat-icon-button [matMenuTriggerFor]="menu">
+                                                <mat-icon>more_vert</mat-icon>
                                         </button>
-                                        <button mat-menu-item>
-                                                <mat-icon>delete</mat-icon>
-                                                <span>Delete</span>
-                                        </button>
-                                </mat-menu>
+                                        <mat-menu #menu="matMenu">
+                                                <button mat-menu-item>
+                                                        <mat-icon>mode_comment</mat-icon>
+                                                        <span>Comment</span>
+                                                </button>
+                                                <button mat-menu-item>
+                                                        <mat-icon>publish</mat-icon>
+                                                        <span>Share</span>
+                                                </button>
+                                                <button mat-menu-item>
+                                                        <mat-icon>delete</mat-icon>
+                                                        <span>Delete</span>
+                                                </button>
+                                        </mat-menu>
 
-                        </mat-toolbar-row>
+                                </mat-toolbar-row>
 
-                </mat-toolbar>
-                <router-outlet></router-outlet>
+                        </mat-toolbar>
+                        <router-outlet></router-outlet>
 
-                <!-- <div style="text-align:center">
-                        <h1>
-                                Welcome to {{ title }}!
+                        <!-- <div style="text-align:center">
+                                <h1>
+                                        Welcome to {{ title }}!
 
-                        </h1>
+                                </h1>
 
-                </div>
-
-                <app-customer-view></app-customer-view>
-
-                <app-customer-add></app-customer-add> -->
-
-
-                <!-- <div style="text-align:center">
-wel
                         </div>
 
-                        <app-patient-view></app-patient-view>
+                        <app-customer-view></app-customer-view>
 
-                        <app-patient-add></app-patient-add> -->
-
-                        <div id="quill">
-                                <p>Content *</p>
-                                <quill-editor  [styles]="editorStyle" placeholder="Enter Text" [modules]="config"
-                                    (onEditorCreated)="created($event)" required>
-                                </quill-editor>
-                            </div>
+                        <app-customer-add></app-customer-add> -->
 
 
-        </div>
-</mat-drawer-container>
+                        <!-- <div style="text-align:center">
+        wel
+                                </div>
+
+                                <app-patient-view></app-patient-view>
+
+                                <app-patient-add></app-patient-add> -->
+
+                                <div id="quill">
+                                        <p>Content *</p>
+                                        <quill-editor  [styles]="editorStyle" placeholder="Enter Text" [modules]="config"
+                                            (onEditorCreated)="created($event)" required>
+                                        </quill-editor>
+                                    </div>
+
+
+                </div>
+        </mat-drawer-container>
+
+      </ng-template>
+
+
+
+
 <!-- <button>change note</button> -->
 <!-- {{title}} -->

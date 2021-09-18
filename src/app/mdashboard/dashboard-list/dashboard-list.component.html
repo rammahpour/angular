@@ -1,41 +1,41 @@
-<p>dashboard works!</p>
-
 <mat-tab-group mat-align-tabs="start">
     <mat-tab label="First">
-
         <div style="text-align:center">
             <h1>
-                    Welcome to {{ title }}!
-
+                Welcome to {{ title }}!
             </h1>
-
-    </div>
-
-    <app-customer-view></app-customer-view>
-
-    <app-customer-add></app-customer-add>
-
+        </div>
+        <app-customer-view></app-customer-view>
+        <app-customer-add></app-customer-add>
         <myshare></myshare>
-
-
     </mat-tab>
     <mat-tab label="Second">
+        <div class="main-div" flex fxLayout="row" fxLayoutAlign="start start">
+            <!-- <div *ngFor="let item of items"></div> -->
+            <mycards>
 
+            </mycards>
+            <mycards>
 
+            </mycards>
+            <mycards>
 
-        <div class="main-div" flex fxLayout="row" fxLayoutAlign="center start">
+            </mycards>
+            <mycards>
 
+            </mycards>
+            <mycards>
 
+            </mycards>
+            <mycards>
 
-<!-- <div *ngFor="let item of items"></div> -->
-            <mycards><p>123</p></mycards>
-            <mycards><p>456</p></mycards>
-            <mycards><p>456</p></mycards>
-            <mycards><p>456</p></mycards>
-            <mycards><p>456</p></mycards>
-            <mycards><p>456</p></mycards>
-            <mycards><p>456</p></mycards>
-            <mycards><p>456</p></mycards>
+            </mycards>
+            <mycards>
+
+            </mycards>
+            <mycards>
+
+            </mycards>
             <!-- <mat-card class="example-card">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
@@ -95,5 +95,19 @@
 
 
     </mat-tab>
-    <mat-tab label="Third">Content 3</mat-tab>
+    <mat-tab label="Third">
+
+
+        Content 3
+
+
+        <video #localVideo playsinline autoplay muted></video>
+<video #remoteVideo playsinline autoplay></video>
+<div>
+      <button #startButton [disabled]="startButtonDisabled" (click)="start()">Start</button>
+      <button #callButton [disabled]="callButtonDisabled" (click)="call()">Call</button>
+      <button #hangupButton [disabled]="hangupButtonDisabled" (click)="hangup()">Hang Up</button>
+</div>
+
+    </mat-tab>
 </mat-tab-group>
